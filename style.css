@@ -1,0 +1,25 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background: #1A181B;
+}
+
+h1 {
+    font-family: "Lexend Deca", Verdana, Geneva, Tahoma, sans-serif;
+    font-optical-sizing: auto;
+    font-size: 10rem;
+
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    user-select: none;
+
+    text-align: center;
+    color: #F7FFF7;
+}

@@ -6,14 +6,13 @@ body {
     height: 100dvh;
     margin: 0;
     background: #1a181b;
-    min-width: 850px;
-    min-height: 674px;
+    transition: all 0.3s ease;
 }
 
 h1 {
     font-family: "Lexend Deca", Verdana, Geneva, Tahoma, sans-serif;
     font-optical-sizing: auto;
-    font-size: clamp(2rem, 25vw, 10rem);
+    font-size: clamp(2rem, 25dvw, 10rem);
     user-select: none;
     text-align: center;
     color: #f7fff7;
@@ -27,7 +26,7 @@ h1 {
 
     font-family: "Lexend Deca", Verdana, Geneva, Tahoma, sans-serif;
     font-optical-sizing: auto;
-    font-size: 4rem;
+    font-size: clamp(2rem, 8dvw, 4rem);
     text-align: center;
     color: #f7fff7;
     user-select: none;
@@ -72,7 +71,7 @@ h1 {
 }
 
 #hud {
-    width: 50em;
+    width: clamp(5em, 90dvw, 50em);
     display: grid;
     grid-template-rows: auto auto;
     margin-bottom: 50px;

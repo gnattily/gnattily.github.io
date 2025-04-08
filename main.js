@@ -34,7 +34,7 @@ function setNote() {
 document.addEventListener('click', setNote)
 
 document.addEventListener('keydown', (e) => {
-    if (e.code === 'Space' || e.code === 'Enter') setNote();
+    if (e.code === 'Space' || e.code === 'Enter') togglePlayer();
 })
 
 const slider = document.getElementById('bpm-slider');
@@ -57,8 +57,11 @@ slider.addEventListener("click", (e) => {
 })
 
 let intervalId;
+let playing = false;
 
 slider.addEventListener("mouseup", () => {
+    if (!playing) return;
+
     clearInterval(intervalId);
 
     intervalId = setInterval(() => {
@@ -66,21 +69,30 @@ slider.addEventListener("mouseup", () => {
     }, 60/bpm * 1000)
 })
 
+function togglePlayer () {
+    if (playing) stopPlayer();
+    else startPlayer();
+}
+
 function startPlayer (e) {
+    playing = true
+
     intervalId = setInterval(() => {
         setNote();
     }, 60/bpm * 1000);
 
-    e.stopPropagation();
+    e?.stopPropagation();
 
     document.getElementById('play').classList.add('hidden');
     document.getElementById('pause').classList.remove('hidden');
 }
 
 function stopPlayer (e) {
+    playing = false;
+
     clearInterval(intervalId);
 
-    e.stopPropagation();
+    e?.stopPropagation();
 
     document.getElementById('play').classList.remove('hidden');
     document.getElementById('pause').classList.add('hidden');

@@ -12,6 +12,22 @@
 </head>
 <body>
     <h1 id="note"></h1>
+    <div>
+        <div id="hud">
+            <div id="info">
+                <img id="play" class="player" src="play.svg" onclick="startPlayer(event)" alt="Play">
+                <img id="pause" class="player hidden" src="pause.svg" onclick="stopPlayer(event)" alt="Pause">
+                <h2 class="bullet">•</h2>
+                <h2 id="bpm">100bpm</h2>
+                <h2 class="bullet">•</h2>
+                <h2 id="count">0 notes</h2>
+            </div>
+            <input type="range" id="bpm-slider" min="20" max="180" step="5" value="100">
+        </div>
+    </div>
+    <div class="progress-container">
+        <div class="progress-bar" id="completion"></div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>

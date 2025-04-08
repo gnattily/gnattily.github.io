@@ -1,25 +1,75 @@
-
 body {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    justify-items: center;
     align-items: center;
-    height: 100vh;
+    height: 100dvh;
     margin: 0;
-    overflow: hidden;
     background: #1A181B;
+    min-width: 850px;
+    min-height: 674px;
 }
 
 h1 {
     font-family: "Lexend Deca", Verdana, Geneva, Tahoma, sans-serif;
     font-optical-sizing: auto;
-    font-size: 10rem;
-
-    word-break: break-word;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-
+    font-size: clamp(2rem, 25vw, 10rem);
     user-select: none;
-
     text-align: center;
     color: #F7FFF7;
+}
+
+#info {
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Lexend Deca", Verdana, Geneva, Tahoma, sans-serif;
+    font-optical-sizing: auto;
+    font-size: 4rem;
+    text-align: center;
+    color: #F7FFF7;
+    user-select: none;
+}
+
+#info h2 {
+    font-size: inherit;
+}
+
+.player {
+    width: 1em;
+}
+
+.bullet {
+    font-size: 0.5em !important;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.progress-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #4caf50;
+    transition: width 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+#hud {
+    width: 50em;
+    display: grid;
+    grid-template-rows: auto auto;
+    margin-bottom: 50px;
 }

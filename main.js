@@ -1,8 +1,13 @@
 const notes = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
 let tempNotes = [...notes];
 let addNote;
+let count = 0;
+
+let bpm = 100;
 
 function setNote() {
+    document.getElementById('completion').style.width = `${tempNotes.length/12 * 100}%`;
+
     // APPARENTLY Math.random() is [0,1) so no need to clamp!!!!!!!!
     const noteIndex = Math.floor(Math.random() * (tempNotes.length))
     const note = tempNotes[noteIndex];
@@ -23,11 +28,60 @@ function setNote() {
     }
 
     document.getElementById('note').textContent = note;
+    document.getElementById('count').textContent = count++ + ' notes';
 }
 
-window.addEventListener('load', setNote)
 document.addEventListener('click', setNote)
 
 document.addEventListener('keydown', (e) => {
     if (e.code === 'Space' || e.code === 'Enter') setNote();
 })
+
+const slider = document.getElementById('bpm-slider');
+
+window.onload = () => {
+    setNote();
+
+    // fixes the slider visually being different than the actual value on reload
+    const event = new Event('input');
+    slider.dispatchEvent(event);
+}
+
+slider.addEventListener("input", () => {
+    bpm = slider.value;
+    document.getElementById('bpm').textContent = bpm + 'bpm'
+})
+
+slider.addEventListener("click", (e) => {
+    e.stopPropagation();
+})
+
+let intervalId;
+
+slider.addEventListener("mouseup", () => {
+    clearInterval(intervalId);
+
+    intervalId = setInterval(() => {
+        setNote();
+    }, 60/bpm * 1000)
+})
+
+function startPlayer (e) {
+    intervalId = setInterval(() => {
+        setNote();
+    }, 60/bpm * 1000);
+
+    e.stopPropagation();
+
+    document.getElementById('play').classList.add('hidden');
+    document.getElementById('pause').classList.remove('hidden');
+}
+
+function stopPlayer (e) {
+    clearInterval(intervalId);
+
+    e.stopPropagation();
+
+    document.getElementById('play').classList.remove('hidden');
+    document.getElementById('pause').classList.add('hidden');
+}

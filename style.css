@@ -5,7 +5,7 @@ body {
     align-items: center;
     height: 100dvh;
     margin: 0;
-    background: #1A181B;
+    background: #1a181b;
     min-width: 850px;
     min-height: 674px;
 }
@@ -16,7 +16,7 @@ h1 {
     font-size: clamp(2rem, 25vw, 10rem);
     user-select: none;
     text-align: center;
-    color: #F7FFF7;
+    color: #f7fff7;
 }
 
 #info {
@@ -29,7 +29,7 @@ h1 {
     font-optical-sizing: auto;
     font-size: 4rem;
     text-align: center;
-    color: #F7FFF7;
+    color: #f7fff7;
     user-select: none;
 }
 
@@ -76,4 +76,79 @@ h1 {
     display: grid;
     grid-template-rows: auto auto;
     margin-bottom: 50px;
+}
+
+:root {
+    --track-height: 6px;
+    --thumb-size: 20px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    height: var(--track-height);
+    background-color: #4E5158;
+    border-radius: 999px;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="range"]::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: var(--track-height);
+    width: var(--x, 50%);
+    background-color: #828a95;
+    border-radius: inherit;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease;
+    z-index: 1;
+}
+
+input[type="range"]:hover::after {
+    background-color: #4caf50;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    background: #f7fff7;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    top: 50%;
+    z-index: 2;
+}
+
+input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: var(--track-height);
+    background: #4E5158;
+    border-radius: 999px;
+}
+
+input[type="range"]::-moz-range-progress {
+    height: var(--track-height);
+    background: #828a95;
+    border-radius: 999px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="range"]:hover::-moz-range-progress {
+    background: #4caf50;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    background: #f7fff7;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
 }

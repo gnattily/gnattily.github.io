@@ -97,3 +97,9 @@ function stopPlayer (e) {
     document.getElementById('play').classList.remove('hidden');
     document.getElementById('pause').classList.add('hidden');
 }
+
+const range = document.querySelector('input[type="range"]');
+range.addEventListener('input', () => {
+  const percent = ((range.value - range.min) / (range.max - range.min)) * 100;
+  range.style.setProperty('--x', percent + '%');
+});

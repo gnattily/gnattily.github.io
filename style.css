@@ -41,6 +41,10 @@ h1 {
     width: 1em;
 }
 
+.player:hover {
+    cursor: pointer;
+}
+
 .bullet {
     font-size: 0.5em !important;
     margin-left: 10px;

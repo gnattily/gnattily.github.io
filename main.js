@@ -34,7 +34,8 @@ function setNote() {
 document.addEventListener('click', setNote)
 
 document.addEventListener('keydown', (e) => {
-    if (e.code === 'Space' || e.code === 'Enter') togglePlayer();
+    if (e.code === 'Space') setNote(); 
+    if (e.code === 'Enter') togglePlayer();
 })
 
 const slider = document.getElementById('bpm-slider');
